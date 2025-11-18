@@ -11,6 +11,11 @@
         <li *ngFor="let e of recipe.etiquetas">{{ e }}</li>
       </ul>
 
+      <!-- LO NUEVO -->
+      <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
+      <p><strong># Ingredientes:</strong> {{ recipe.ingredientes.length }}</p>
+      <!-- FIN LO NUEVO -->
+
       <button class="btn-ver" (click)="goToDetail(recipe)">
         Ver detalle
       </button>
