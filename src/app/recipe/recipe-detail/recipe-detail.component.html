@@ -1,18 +1,41 @@
-<div class="recipe-detail" *ngIf="recipe as r">
-  <h2>{{ r.nombre }}</h2>
+<h1 class="titulo">Recetas uniandes</h1>
 
-  <img class="recipe-detail-img" [src]="r.imagen" alt="{{ r.imagen }}" />
+<div class="detail-bg">
 
-  <p><strong>Porciones:</strong> {{ r.porciones }}</p>
-  <p><strong>Tiempo:</strong> {{ r.tiempo_minutos }} min</p>
+  <div class="detail-card" *ngIf="recipe as r">
 
-  <h3>Ingredientes</h3>
-  <app-ingredient-list [ingredients]="r.ingredientes"></app-ingredient-list>
+    <div class="detail-left">
+      <h2>{{ r.nombre }}</h2>
 
-  <h3>Pasos</h3>
-  <ol>
-    @for(step of r.pasos; track step){
-    <li>{{ step }}</li>
-    }
-  </ol>
+      <img class="detail-img" [src]="r.imagen" alt="{{ r.nombre }}" />
+
+      <button (click)="goBack()" class="btn-regresar" type="button">
+        Regresar
+      </button>
+    </div>
+
+    <div class="detail-right">
+      <div class="info-row">
+        <p><strong>Porciones:</strong> {{ r.porciones }}</p>
+        <p><strong>Tiempo:</strong> {{ r.tiempo_minutos }} min</p>
+      </div>
+
+      <div class="info-row">
+        <p><strong>Dificultad:</strong> {{ r.dificultad }}</p>
+        <p><strong>Tipo:</strong> {{ r.tipo }}</p>
+      </div>
+
+      <h3>Ingredientes</h3>
+      <app-ingredient-list [ingredients]="r.ingredientes"></app-ingredient-list>
+
+      <h3>Pasos</h3>
+      <ol>
+        @for(step of r.pasos; track step) {
+        <li>{{ step }}</li>
+        }
+      </ol>
+    </div>
+
+  </div>
+
 </div>

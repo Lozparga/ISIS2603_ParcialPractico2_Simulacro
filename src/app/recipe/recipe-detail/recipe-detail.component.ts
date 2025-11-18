@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../Recipe';
 
@@ -15,6 +15,7 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private recipeService: RecipeService
   ) {}
 
@@ -29,5 +30,8 @@ export class RecipeDetailComponent implements OnInit {
         console.error('Error cargando detalle:', err);
       }
     });
+  }
+  goBack() {
+  this.router.navigate(['/recipe']);
   }
 }
