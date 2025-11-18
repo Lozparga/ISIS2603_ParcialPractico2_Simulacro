@@ -1,28 +1,20 @@
-<div>
-    <table>
-      <thead>
-        <tr>
-          <th>Receta</th>
-          <th>Imagen</th>
-          <th>Porciones</th>
-          <th>Tiempo</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(recipe of recipes; track recipe.id){
-        <tr (click)="goToDetail(recipe)">
-          <td>{{ recipe.nombre }}</td>
-          <td>
-            <img
-              class="recipe-img"
-              [src]="recipe.imagen"
-              alt="{{ recipe.imagen }}"
-            />
-          </td>
-          <td>{{ recipe.porciones }}</td>
-          <td>{{ recipe.tiempo_minutos }} min</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+<h1 class="titulo">Recetas unianades</h1>
+
+<div class="recipe-grid">
+  @for (recipe of recipes; track recipe.id) {
+    <div class="card">
+      <img class="card-img" [src]="recipe.imagen" alt="{{ recipe.nombre }}" />
+
+      <h3 class="card-title">{{ recipe.nombre }}</h3>
+
+      <ul class="card-list">
+        <li *ngFor="let e of recipe.etiquetas">{{ e }}</li>
+      </ul>
+
+      <button class="btn-ver" (click)="goToDetail(recipe)">
+        Ver detalle
+      </button>
+    </div>
+  }
+</div>
+
