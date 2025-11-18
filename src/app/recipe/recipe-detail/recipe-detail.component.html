@@ -1,23 +1,18 @@
-<div class="recipe-detail">
-  <h2>{{ recipe.nombre }}</h2>
-  <img
-    class="recipe-detail-img"
-    [src]="recipe.imagen"
-    alt="{{ recipe.imagen }}"
-  />
-  <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
-  <p><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</p>
+<div class="recipe-detail" *ngIf="recipe as r">
+  <h2>{{ r.nombre }}</h2>
+
+  <img class="recipe-detail-img" [src]="r.imagen" alt="{{ r.imagen }}" />
+
+  <p><strong>Porciones:</strong> {{ r.porciones }}</p>
+  <p><strong>Tiempo:</strong> {{ r.tiempo_minutos }} min</p>
+
   <h3>Ingredientes</h3>
-  <app-ingredient-list
-    [ingredients]="recipe.ingredientes"
-  ></app-ingredient-list>
+  <app-ingredient-list [ingredients]="r.ingredientes"></app-ingredient-list>
 
   <h3>Pasos</h3>
   <ol>
-    @for(step of recipe.pasos; track step){
-    <li>
-      {{ step }}
-    </li>
+    @for(step of r.pasos; track step){
+    <li>{{ step }}</li>
     }
   </ol>
 </div>

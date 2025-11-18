@@ -1,10 +1,4 @@
 <div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
-    </div>
-    }
     <table>
       <thead>
         <tr>
@@ -16,7 +10,7 @@
       </thead>
       <tbody>
         @for(recipe of recipes; track recipe.id){
-        <tr (click)="onSelect(recipe)">
+        <tr (click)="goToDetail(recipe)">
           <td>{{ recipe.nombre }}</td>
           <td>
             <img
@@ -32,4 +26,3 @@
       </tbody>
     </table>
   </div>
-</div>

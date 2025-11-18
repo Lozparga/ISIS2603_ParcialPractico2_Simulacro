@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../Recipe';
-import { recipeData } from '../recipeData';
+import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,17 +11,25 @@ import { recipeData } from '../recipeData';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
-  selected: Boolean = false;
-  selectedRecipe: Recipe | null = null;
 
-  constructor() {}
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.recipes = recipeData;
+    this.recipeService.getRecipes().subscribe({
+      next: (data) => {
+        this.recipes = data;
+      },
+      error: (err) => {
+        console.error('Error cargando recetas:', err);
+      }
+    });
   }
 
-  onSelect(recipe: Recipe) {
-    this.selectedRecipe = recipe;
-    this.selected = true;
+  // ✔ Ahora este método navega al detalle
+  goToDetail(recipe: Recipe) {
+    this.router.navigate(['/recipe', recipe.id]);
   }
 }

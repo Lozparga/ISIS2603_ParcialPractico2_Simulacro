@@ -4,6 +4,7 @@ export class Recipe {
   id: number;
   nombre: string;
   porciones: number;
+  descripcion: string;   // ✔ Faltaba
   pasos: string[];
   tiempo_minutos: number;
   dificultad: string;
@@ -16,6 +17,7 @@ export class Recipe {
     id: number,
     nombre: string,
     porciones: number,
+    descripcion: string, // ✔ Faltaba
     pasos: string[],
     tiempo_minutos: number,
     dificultad: string,
@@ -27,6 +29,7 @@ export class Recipe {
     this.id = id;
     this.nombre = nombre;
     this.porciones = porciones;
+    this.descripcion = descripcion; // ✔ Asignación
     this.pasos = pasos;
     this.tiempo_minutos = tiempo_minutos;
     this.dificultad = dificultad;
